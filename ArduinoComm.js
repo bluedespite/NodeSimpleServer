@@ -25,13 +25,13 @@ async function Arduino_Comm() {
 function select_port(p){
     var path='';
     p.forEach(function(port){
-        try{
+        .then{
             if (port.manufacturer.includes('arduino')){
                 path=port.path;
             }}
-        catch(err){}   
+        .catch(err){}
 });
     return path;
 }
 
-module.exports  data = data;
+module.exports data;
