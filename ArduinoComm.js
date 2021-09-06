@@ -1,37 +1,18 @@
-const SerialPort = require('serialport');
-const Readline = require('@serialport/parser-readline');
-
-
-async function Arduino_Comm() {
-    const p = await SerialPort.list();
-    const path = select_port(p);
-    const port = await new SerialPort(path, { baudRate: 9600 });
-    const parser = port.pipe(new Readline({ delimiter: '\n' }));
-    await parser.on('data', data =>{
-        console.log('got word from arduino:', data.toString());
-      });
-    
-    await parser.on('error', err =>{
-        console.log('Error :', errmesage);
-      });
-    await setTimeout(() => {port.write('hello from node\n', (err) => {
-    if (err) {
-        return console.log('Error on write: ', err.message);
-    }
-    console.log('message written');
-    port.close;
-    }); }, 2000);
-    }
-function select_port(p){
-    var path='';
-    p.forEach(function(port){
-        .then{
-            if (port.manufacturer.includes('arduino')){
-                path=port.path;
-            }}
-        .catch(err){}
-});
-    return path;
+const SerialPort = require("serialport");
+const Readline = require("@serialport/parser-readline");
+let ddata = "";
+async function ReadArduino() {
+  try {
+    list = await SerialPort.list();
+    path = list[0].path;
+    port = await new SerialPort(path, { baudRate: 9600 });
+    parser = await port.pipe(new Readline({ delimiter: "\n" }));
+    await parser.on("data", (data) => {
+      console.log("got word from arduino:", data);
+      //guardar en base de datos
+    });
+    setInterval(() => port.write("hello from node\n"), 2000);
+  } catch {}
 }
-
-module.exports data;
+ReadArduino();
+//module.exports.ReadArduino = ReadArduino;
