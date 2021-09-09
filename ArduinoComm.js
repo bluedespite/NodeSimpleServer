@@ -1,6 +1,5 @@
 const SerialPort = require("serialport");
 const Readline = require("@serialport/parser-readline");
-let ddata = "";
 async function ReadArduino() {
   try {
     list = await SerialPort.list();
