@@ -1,3 +1,4 @@
+//App that read the arduino with GPS Shield and save in Mongodb
 const SerialPort = require("serialport");
 const Readline = require("@serialport/parser-readline");
 const mongoose = require("mongoose");
