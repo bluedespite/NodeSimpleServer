@@ -1,5 +1,16 @@
 const mongoose = require("mongoose");
-const lectura = { tag: "prueba", medida: 1.5 };
+const lectura = {
+  FECHA_HORA: "2021-09-09 14:40:23",
+  LATITUD: "0.000000",
+  LONGITUD: "0.000000",
+  VELOCIDAD: "0.00",
+  AN0: "126",
+  AN1: "134",
+  AN2: "143",
+  AN3: "201",
+  AN4: "284",
+  AN5: "345",
+};
 
 async function savedb(lectura) {
   mongoose.connect(
